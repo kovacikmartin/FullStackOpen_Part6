@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { addVote } from '../reducers/anecdoteReducer'
 import { showNotification, hideNotification } from '../reducers/notificationReducer'
 
+
 const AnecdoteList = (props) => {
+
+    const dispatch = useDispatch()
 
     const anecdotes = useSelector(({anecdotes, filter}) => {
 
@@ -11,8 +14,6 @@ const AnecdoteList = (props) => {
     })
 
     const sortedAnecdotes = anecdotes.sort((a, b) => b.votes - a.votes)
-  
-    const dispatch = useDispatch()
   
     const vote = (id) => {
   
