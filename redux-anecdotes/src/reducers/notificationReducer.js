@@ -1,11 +1,16 @@
 const initialState = null
 
-export const showNotification = (notification) => {
+export const showNotification = (notification, time) => {
 
-    return{
+    return async dispatch => {
 
-        type: 'SHOW',
-        notification: notification
+        dispatch({
+            
+            type: 'SHOW',
+            notification: notification
+        })
+
+        setTimeout(() => dispatch(hideNotification()), time)
     }
 }
 
