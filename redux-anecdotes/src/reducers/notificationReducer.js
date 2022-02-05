@@ -1,16 +1,22 @@
 const initialState = null
+let timeout = null
 
 export const showNotification = (notification, time) => {
 
+    if(timeout !== null){
+
+        clearTimeout(timeout)
+    }
+    
     return async dispatch => {
 
         dispatch({
-            
+
             type: 'SHOW',
             notification: notification
         })
 
-        setTimeout(() => dispatch(hideNotification()), time)
+       timeout = setTimeout(() => dispatch(hideNotification()), time)
     }
 }
 
